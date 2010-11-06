@@ -10,9 +10,9 @@
        <key>Developer Identifier</key>
        <string>22T7D5NSV6</string>
        <key>CFBundleVersion</key>
-       <string>1.0.0</string>
+       <string>1.0.1</string>
        <key>CFBundleShortVersionString</key>
-       <string>1</string>
+       <string>1.0.1</string>
        <key>URL</key>
        <string>http://s3.amazonaws.com/hockey264/hockey264-1.0.safariextz</string>
      </dict>
