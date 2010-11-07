@@ -1,0 +1,19 @@
+/*  The NHL.com homepage attempts to hide mbvHome so lets reverse this */
+#mbvHome { 
+	display:block !important;
+	visibility: visible !important;
+}
+
+#ipadPlayer {
+	position: relative !important;
+	top: 0 !important;
+}
+
+#nlFlexPlayerDiv {
+	height: 360px !important;
+}
+
+td.playerContainer {
+	padding-top: 5px;
+	padding-left: 0 !important;	
+}
