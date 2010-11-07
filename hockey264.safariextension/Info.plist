@@ -60,6 +60,6 @@
 	<key>Update Manifest URL</key>
 	<string>http://s3.amazonaws.com/hockey264/update.plist</string>
 	<key>Website</key>
-	<string>http://hockey264.posterous.com</string>
+	<string>http://paulgrav.posterous.com</string>
 </dict>
 </plist>
