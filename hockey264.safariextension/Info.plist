@@ -39,6 +39,8 @@
 			<string>http://www.nhl.com/*</string>
 		</array>
 	</dict>
+	<key>Description</key>
+	<string>Removes Flash from nhl.com.</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
@@ -57,5 +59,7 @@
 	</dict>
 	<key>Update Manifest URL</key>
 	<string>http://s3.amazonaws.com/hockey264/update.plist</string>
+	<key>Website</key>
+	<string>http://hockey264.posterous.com</string>
 </dict>
 </plist>
