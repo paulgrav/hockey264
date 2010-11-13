@@ -17,3 +17,7 @@ td.playerContainer {
 	padding-top: 5px;
 	padding-left: 0 !important;	
 }
+
+#highlightplayer {
+	display: none !important;
+}

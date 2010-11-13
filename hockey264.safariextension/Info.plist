@@ -11,11 +11,14 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1</string>
+	<string>1.2</string>
 	<key>CFBundleVersion</key>
-	<string>1.1</string>
+	<string>1.2</string>
 	<key>Chrome</key>
-	<dict/>
+	<dict>
+		<key>Global Page</key>
+		<string>global.html</string>
+	</dict>
 	<key>Content</key>
 	<dict>
 		<key>Scripts</key>
@@ -49,8 +52,8 @@
 		<dict>
 			<key>Allowed Domains</key>
 			<array>
-				<string>video.nhl.com</string>
 				<string>www.nhl.com</string>
+				<string>video.nhl.com</string>
 				<string>nhl.com</string>
 			</array>
 			<key>Level</key>

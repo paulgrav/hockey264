@@ -23,11 +23,14 @@ if( window.top == window ) {
 			const element = event.target
 			if(element instanceof HTMLObjectElement && element.id == 'nhl') {
 				var parentNode = element.parentNode;
-				parentNode.removeChild(element);
-				parentNode.appendChild(mbvHome);
-			}
+				if( parentNode ) {
+					parentNode.removeChild(element);
+					parentNode.appendChild(mbvHome);
+				}
+			} 
 		
 		} ,true);		
 	}
+	
 
 }

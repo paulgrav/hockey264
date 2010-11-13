@@ -17,9 +17,63 @@ if( window.top == window ) {
 		
 		var ipadPlayer = document.getElementById('ipadPlayer');
 		var nlFlexPlayerDiv = document.getElementById('nlFlexPlayerDiv');
+		if( nlFlexPlayerDiv ) {
+			nlFlexPlayerDiv.appendChild(ipadPlayer);
+			ipadPlayer.setAttribute('style','');
+			nlFlexPlayerDiv.parentNode.setAttribute('class', 'playerContainer');			
+		}
+	}
+	
+	
+	var recap = /nhl\.com\/ice\/recap/;
+	if( recap.test(document.URL) ) {
 		
-		nlFlexPlayerDiv.appendChild(ipadPlayer);
-		ipadPlayer.setAttribute('style','');
-		nlFlexPlayerDiv.parentNode.setAttribute('class', 'playerContainer');
+		var reportAnchorElement = document.evaluate( '//a[contains(@href,"htmlreports")]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null ).singleNodeValue;
+		var reg = /htmlreports\/(\d+)\/\D+(\d+)(\d{3})/;
+		var seasonId;
+		var gameId;
+		var otherId;
+		
+		if( regResults = reg.exec(reportAnchorElement.getAttribute('href') ) ) {
+			seasonId = regResults[1];
+			gameId = regResults[3];
+			otherId = regResults[2];
+		}
+		
+		safari.self.tab.dispatchMessage("getHighlights", {"xml":1,"season": seasonId, "type":2, "number": gameId});
+		safari.self.addEventListener("message", function(event) {
+
+			if( event.name == "highlightsReady") {
+				var highlights = (new DOMParser()).parseFromString(event.message, "text/xml");
+				
+				document.addEventListener('DOMNodeInserted', function(event) {
+					const element = event.target;		
+					if ( element instanceof HTMLEmbedElement ) {
+						var reg = /eid=(\w+)/;
+						
+						var result = reg.exec(element.getAttribute('flashvars'));
+						var eid = result[1];
+						
+						var altClip = document.evaluate('//event-id[.="'+ eid +'"]/../alt-video-clip',highlights, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+						if( altClip ) {
+							var video = document.createElement('video');
+							video.setAttribute('src',altClip.textContent);
+							video.setAttribute('autoplay','autoplay');
+							video.setAttribute('controls','controls');
+							
+							var parentNode = element.parentNode;
+							if( parentNode ) {
+								parentNode.removeChild(element);
+								parentNode.appendChild(video);
+							}
+						}
+						
+				
+					}
+				} ,true);							
+			}
+			
+		}, false);
+		
 	}
 }
