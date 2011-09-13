@@ -13,8 +13,8 @@ if( window.top == window ) {
 
 		document.addEventListener('DOMNodeRemoved', function(event) {
 			const element = event.target;
-			if( element.id == 'mbvHome') {
-				mbvHome = element;
+			if( element.id == 'flashOn') {
+				mbvHome = element.parentNode.cloneNode(true);
 			}
 		} ,false);
 	
@@ -23,10 +23,14 @@ if( window.top == window ) {
 			const element = event.target
 			if(element instanceof HTMLObjectElement && element.id == 'nhl') {
 				var parentNode = element.parentNode;
-				if( parentNode ) {
+
+				if( parentNode && mbvHome ) {
 					parentNode.removeChild(element);
 					parentNode.appendChild(mbvHome);
+					document.getElementById('flashOff').style.display = '';
+					document.getElementById('flashOn').style.display = 'none';
 				}
+
 			} 
 		
 		} ,true);		

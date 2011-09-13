@@ -1,6 +1,6 @@
 if( window.top == window ) {
 	// this script tag is for the video.nhl.com page
-	// it only servces mp4 to the ipad, but I effected force the ipad check to return true
+	// it only servces mp4 to the ipad, but I force the ipad check to return true
 	// when a clip is played, some meta info is downloaded via xhr.  it's xml and tells the video
 	// player what to play.
 	// by default it plays whatever's contained in the video-clip tag, but this is only used by flash
