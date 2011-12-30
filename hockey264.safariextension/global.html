@@ -3,10 +3,16 @@
 	<head>
 	<script type="text/javascript">
 		safari.application.addEventListener("message", function (event) {
+			
 			if(event.name === "getHighlights") {
 		       var params = event.message;
 		       getHighlights(params,event.target.page);
 		    }
+		    
+		    if(event.name === "isHTMLCarouselEnabled") {
+				if( safari.extension.settings.enableHTMLCarousel )
+					event.target.page.dispatchMessage("HTMLCarouselIsEnabled", 1 );
+			}
 			
 		}, false);
 	
@@ -16,11 +22,9 @@
 			req.onreadystatechange = function() {
 
 				if (req.readyState == 4) {
-					console.log(req.statusText);
 					if (req.status == 200) {
 						// ...processing statements go here...
 						highlights = req.responseXML;
-						console.log(highlights);
 						page.dispatchMessage("highlightsReady", req.responseText);
 					} 
 				}
@@ -28,6 +32,7 @@
 			req.open('GET', 'http://video.nhl.com/videocenter/highlights?xml=1&season=' + params.season + '&number=' + params.number + '&type=2');
 			req.send();
 		}
+		
 	</script>
 	</head>
 	<body>
