@@ -1,7 +1,7 @@
 if( window.top == window ) {
 
 	// no need to run this on the video page
-	var re = /video\.nhl\.com/;
+	var re = /video\..*?\.?nhl\.com/;
 	if( !re.test(document.URL) ) {
 		// the end script gets called after $(document).ready so I can't intercept the function that gets called.
 		// so what I do instead is setup some listeners for node removal/insertion and intercept the insertion of 
